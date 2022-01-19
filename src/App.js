@@ -50,7 +50,7 @@ function App() {
         >
           <Navbar
             title="TextUtils"
-            about="About here"
+            about="About Here"
             mode={mode}
             enable={enable}
             toggleMode={toggleMode}
