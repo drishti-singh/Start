@@ -4,7 +4,7 @@ import About from "./components/About";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [mode, setdarkMode] = useState("light");
@@ -42,37 +42,33 @@ function App() {
 
   return (
     <>
-    <Router>
-      <div
-        style={{
-          backgroundColor: `${mode === "light" ? "white" : "#00000091"}`,
-        }}
-      >
-        <Navbar
-          title="TextUtils"
-          about="About TextUtils"
-          mode={mode}
-          enable={enable}
-          toggleMode={toggleMode}
-        />
-
-        <Alert alert={alert} />
-        <Routes>
-          <Route exact path="/about"
-            element = {<About mode={mode} />}>
-          </Route>
-          <Route exact path="/"
-
-          element = {  <Textform
-              heading="Enter the text to Analyse"
-              toggleMode={toggleMode}
-              mode={mode}
-              showAlert={showAlert}
-            />}>
-          </Route>
-        </Routes>
-        {/* <Navbar/> defaultProps */}
-      </div>
+      <Router>
+        <div
+          style={{
+            backgroundColor: `${mode === "light" ? "white" : "#00000091"}`,
+          }}
+        >
+          <Navbar
+            title="TextUtils"
+            about="About TextUtils"
+            mode={mode}
+            enable={enable}
+            toggleMode={toggleMode}
+          />
+         
+          <Alert alert={alert} />
+          <Routes>
+            <Route exact path="/about" element={<About mode={mode} />}></Route>
+          </Routes>
+          <Routes>
+            <Route exact path="/" element={ <Textform
+            heading="Enter the text to Analyse"
+            toggleMode={toggleMode}
+            mode={mode}
+            showAlert={showAlert}
+          />}></Route>
+          </Routes>
+        </div>
       </Router>
     </>
   );
